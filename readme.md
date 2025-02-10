@@ -23,15 +23,67 @@ This is a backend application for a **Ticket Management System** built with **Ex
 - **CORS**: Cross-Origin Resource Sharing.
 - **Dotenv**: Environment variable management.
 
+## Setup Instructions
+
+### Prerequisites
+
+- Install **Express**.
+- Install **Prisma**.
+- Set up a **MySQL** database.
+- Configure environment variables in a `.env` file.
+
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/Talat09/visionary
+
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Set up the `.env` file:
+   ```sh
+   DATABASE_URL="mysql://user:password@localhost:3306/database_name"
+   JWT_SECRET="your_secret_key"
+   ```
+4. Prisma:
+
+   ```sh
+   npx prisma generate
+
+   ```
+
+5. Start Prisma server:
+   ```sh
+   npx prisma studio
+   ```
+6. Start node server:
+   ```sh
+   nodemon server.js
+   ```
+7. Set Up Frontend:
+   ```sh
+   npm install
+   ```
+8. Start Frontend:
+   ```sh
+   npm run dev
+   ```
 
 ## API Endpoints
 
 ### Authentication
 
 #### Register a New User
+
 **POST** `/api/auth/register`
 
 **Request Body:**
+
 ```json
 {
   "fullName": "John Doe",
@@ -42,6 +94,7 @@ This is a backend application for a **Ticket Management System** built with **Ex
 ```
 
 **Response:**
+
 ```json
 {
   "message": "User registered successfully",
@@ -55,9 +108,11 @@ This is a backend application for a **Ticket Management System** built with **Ex
 ```
 
 #### Login
+
 **POST** `/api/auth/login`
 
 **Request Body:**
+
 ```json
 {
   "email": "john@example.com",
@@ -66,6 +121,7 @@ This is a backend application for a **Ticket Management System** built with **Ex
 ```
 
 **Response:**
+
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -81,14 +137,17 @@ This is a backend application for a **Ticket Management System** built with **Ex
 ### Tickets
 
 #### Create a New Ticket (Customer Only)
+
 **POST** `/api/tickets`
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "subject": "Login Issue",
@@ -97,6 +156,7 @@ Authorization: Bearer <token>
 ```
 
 **Response:**
+
 ```json
 {
   "id": 1,
@@ -109,14 +169,17 @@ Authorization: Bearer <token>
 ```
 
 #### Get All Tickets (Admin Only)
+
 **GET** `/api/tickets`
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
 
 **Response:**
+
 ```json
 [
   {
@@ -136,14 +199,17 @@ Authorization: Bearer <token>
 ```
 
 #### Get User's Tickets (Customer Only)
+
 **GET** `/api/tickets/my-tickets`
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
 
 **Response:**
+
 ```json
 [
   {
@@ -158,14 +224,17 @@ Authorization: Bearer <token>
 ```
 
 #### Update Ticket Status (Admin Only)
+
 **PATCH** `/api/tickets/:id`
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "status": "Resolved" // or "Closed"
@@ -173,6 +242,7 @@ Authorization: Bearer <token>
 ```
 
 **Response:**
+
 ```json
 {
   "id": 1,
@@ -183,6 +253,4 @@ Authorization: Bearer <token>
   "adminId": null
 }
 ```
-
-
 
