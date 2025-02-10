@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  fullName String
+  email    String @unique
+  password String
+  role     String // "admin" or "customer"
+  
+  customerTickets Ticket[] @relation(name: "CustomerTicket")
+  adminTickets    Ticket[] @relation(name: "AdminTicket")
+}
+
+model Ticket {
+  id          Int    @id @default(autoincrement())
+  subject     String
+  description String
+  status      String @default("Open") // Open, Resolved, Closed
+  customerId  Int
+  adminId     Int?
+  
+  customer    User   @relation(name: "CustomerTicket", fields: [customerId], references: [id])
+  admin       User?  @relation(name: "AdminTicket", fields: [adminId], references: [id])
+}
