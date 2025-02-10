@@ -23,15 +23,6 @@ This is a backend application for a **Ticket Management System** built with **Ex
 - **CORS**: Cross-Origin Resource Sharing.
 - **Dotenv**: Environment variable management.
 
-## Setup Instructions
-
-### Prerequisites
-
-- Install **Node.js**.
-- Set up a **MySQL** database.
-- Configure environment variables in a `.env` file.
-
-
 
 ## API Endpoints
 
