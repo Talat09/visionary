@@ -31,30 +31,7 @@ This is a backend application for a **Ticket Management System** built with **Ex
 - Set up a **MySQL** database.
 - Configure environment variables in a `.env` file.
 
-### Installation
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-repo/ticket-management.git
-   cd ticket-management
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-3. Set up the `.env` file:
-   ```sh
-   DATABASE_URL="mysql://user:password@localhost:3306/database_name"
-   JWT_SECRET="your_secret_key"
-   ```
-4. Run database migrations:
-   ```sh
-   npx prisma migrate dev --name init
-   ```
-5. Start the server:
-   ```sh
-   npm start
-   ```
 
 ## API Endpoints
 
@@ -216,14 +193,5 @@ Authorization: Bearer <token>
 }
 ```
 
-## Notes
 
-- **Authentication**: All endpoints (except `/api/auth/register` and `/api/auth/login`) require a valid JWT token in the `Authorization` header.
-- **Role-Based Access**:
-  - **Customer**: Can create tickets and view their own tickets.
-  - **Admin**: Can view all tickets and update ticket statuses.
-
-## License
-
-This project is licensed under the **MIT License**.
 
